@@ -6,7 +6,7 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 17:42:41 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/07 20:17:06 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/10 19:17:40 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ static void	convertInt(const std::string &nbr)
 		std::cout << static_cast<int>(l) << '\n';
 	std::cout
 		<< "float: " << static_cast<float>(l) << ".0f\n"
-		<< "double: " << static_cast<double>(l) << "0.\n";
+		<< "double: " << static_cast<double>(l) << ".0\n";
 }
 
 static void	convertFloat(const std::string &nbr)
@@ -252,6 +252,15 @@ void	ScalarConverter::convert(const std::string &str)
 			break ;
 		case C:
 			convertChar(str, len);
+			break ;
+		case I:
+			convertInt(str);
+			break ;
+		case F:
+			convertFloat(str);
+			break ;
+		case D:
+			convertDouble(str);
 			break ;
 	}
 }
