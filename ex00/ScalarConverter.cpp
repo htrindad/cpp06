@@ -6,7 +6,7 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 17:42:41 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/10 19:17:40 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/10 20:35:47 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &ref)
 static bool	isSpecial(const std::string &nbr)
 {
 	if (nbr == "nan" || nbr == "nanf" || nbr == "+inf" \
-		|| nbr == "+inff" || nbr == "-inf" || str == "-inff")
+		|| nbr == "+inff" || nbr == "-inf" || nbr == "-inff")
 		return true;
 	return false;
 }
 
 static bool	isChar(const std::string &nbr, const std::size_t &len)
 {
-	if (len == 1 && !std::isdigit(nbr))
+	if (len == 1 && !std::isdigit(nbr[0]))
 		return true;
-	if (len == 3 && str[0] == '\'' && str[2] == '\'')
+	if (len == 3 && nbr[0] == '\'' && nbr[2] == '\'')
 		return true;
 	return false;
 }
@@ -57,8 +57,8 @@ static bool	isInt(const std::string &nbr, const std::size_t &len)
 		i++;
 		f = true;
 	}
-	for (i; (nbr[i] && len > 0 && len < 12) || (nbr[i] && !f && len > 0 && len < 11); i++)
-		if (!std::isdigit(nbr[i]))
+	while ((nbr[i] && len > 0 && len < 12) || (nbr[i] && !f && len > 0 && len < 11))
+		if (!std::isdigit(nbr[i++]))
 			return false;
 	return true;
 }
@@ -85,7 +85,7 @@ static bool	isFloat(const std::string &nbr, const std::size_t &len, const std::s
 	return true;
 }
 
-type_t	ScalarConverter::getType(const std::string &nbr, std::size_t &len)
+type_t getType(const std::string &nbr, std::size_t &len)
 {
 	std::size_t	inf[2];
 
@@ -95,9 +95,9 @@ type_t	ScalarConverter::getType(const std::string &nbr, std::size_t &len)
 	{
 		if (isSpecial(nbr))
 			return S;
-		if (isChar(nbr))
+		if (isChar(nbr, len))
 			return C;
-		if (isInt(nbr))
+		if (isInt(nbr, len))
 			return I;
 	}
 	if (inf[1] != std::string::npos && inf[0] != std::string::npos)
@@ -163,10 +163,10 @@ static void	convertInt(const std::string &nbr)
 		if (std::isprint(l))
 			std::cout << '\'' << static_cast<char>(l) << "'\n";
 		else
-			std::cout << "Non displayable\n"
+			std::cout << "Non displayable\n";
 	}
 	std::cout << "int: ";
-	if (l < MIN_INT || l > MAX_INT)
+	if (l < INT_MIN || l > INT_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<int>(l) << '\n';
@@ -178,29 +178,29 @@ static void	convertInt(const std::string &nbr)
 static void	convertFloat(const std::string &nbr)
 {
 	const double 	f = std::atof(nbr.c_str());
-	const bool	t = std::fabs(d - static_cast<int>(d)) < 0.0000000000001;
+	const bool	t = std::fabs(f - static_cast<int>(f)) < 0.0000000000001;
 
 	std::cout << "char: ";
 	if (f < 0 || f > 127)
 		std::cout << "impossible\n";
 	else
 	{
-		if (std::isprint(d))
+		if (std::isprint(f))
 			std::cout << '\'' << static_cast<char>(f) << "'\n";
 		else
 			std::cout << "Non displayable\n";
 	}
 	std::cout << "int: ";
-	if (static_cast<long>(f) < MIN_INT || static_cast<long>(f) > MAX_INT)
+	if (static_cast<long>(f) < INT_MIN || static_cast<long>(f) > INT_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<int>(f) << '\n';
 	std::cout << "float: ";
-	if (f < MIN_FLOAT || f > MAX_FLOAT)
+	if (f < FLT_MIN || f > FLT_MAX)
 		std::cout << "impossible\n";
 	else
-		std::cout << f << (t ? ".0f\n" : "f\n");
-	std::cout << "double: " << static_cast<double>(f) << (t ? ".0\n" : '\n');
+		std::cout << f << (t ? ".0f" : "f") << '\n';
+	std::cout << "double: " << static_cast<double>(f) << (t ? ".0" : "") << '\n';
 }
 
 static void	convertDouble(const std::string &nbr)
@@ -219,17 +219,17 @@ static void	convertDouble(const std::string &nbr)
 			std::cout << "Non displayable\n";
 	}
 	std::cout << "int: ";
-	if (d < MIN_INT || d > MAX_INT)
+	if (d < INT_MIN || d > INT_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<int>(d) << '\n';
 	std::cout << "float: ";
-	if (d < MIN_FLOAT || d > MAX_FLOAT)
+	if (d < FLT_MIN || d > FLT_MAX)
 		std::cout << "impossible\n";
 	else
-		std::cout << static_cast<float>(d) << '\n';
+		std::cout << static_cast<float>(d) << (t ? ".0f" : "f") << '\n';
 	std::cout << "double: ";
-	if (d < MIN_DOUBLE || d > MAX_DOUBLE)
+	if (d < DBL_MIN || d > DBL_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << d << '\n';
