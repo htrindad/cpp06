@@ -6,7 +6,7 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 17:42:41 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/10 20:35:47 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/11 19:35:01 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ type_t getType(const std::string &nbr, std::size_t &len)
 
 	inf[0] = nbr.find('.');
 	inf[1] = nbr.find('f');
-	if (inf[0] == std::string::npos)
+	if (inf[0] == std::string::npos || nbr == ".")
 	{
 		if (isSpecial(nbr))
 			return S;
@@ -196,7 +196,7 @@ static void	convertFloat(const std::string &nbr)
 	else
 		std::cout << static_cast<int>(f) << '\n';
 	std::cout << "float: ";
-	if (f < FLT_MIN || f > FLT_MAX)
+	if (f < -FLT_MAX || f > FLT_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << f << (t ? ".0f" : "f") << '\n';
@@ -224,12 +224,12 @@ static void	convertDouble(const std::string &nbr)
 	else
 		std::cout << static_cast<int>(d) << '\n';
 	std::cout << "float: ";
-	if (d < FLT_MIN || d > FLT_MAX)
+	if (d < -FLT_MAX || d > FLT_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << static_cast<float>(d) << (t ? ".0f" : "f") << '\n';
 	std::cout << "double: ";
-	if (d < DBL_MIN || d > DBL_MAX)
+	if (d < -DBL_MAX || d > DBL_MAX)
 		std::cout << "impossible\n";
 	else
 		std::cout << d << '\n';
