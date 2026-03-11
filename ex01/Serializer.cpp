@@ -6,7 +6,7 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 19:44:19 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/11 19:52:25 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/11 20:03:33 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ Serializer &Serializer::operator=(const Serializer &ref)
 
 // Methods
 
-uintptr_t	Serializer::deserialize(const Data *ptr) { return reinterpret_cast<uintptr_t>(ptr); }
-Data		*Serializer::serialize(const uintptr_t raw) { return reinterpret_cast<Data*>(raw); }
+uintptr_t	Serializer::serialize(const Data *ptr) { return reinterpret_cast<uintptr_t>(ptr); }
+Data		*Serializer::deserialize(const uintptr_t raw) { return reinterpret_cast<Data*>(raw); }

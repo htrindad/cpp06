@@ -6,13 +6,14 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 19:52:44 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/11 19:56:36 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/11 20:04:48 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.h"
+#include "Data.h"
 
-void main()
+int main()
 {
 	Data data;
 	Data *ptr;
@@ -25,5 +26,6 @@ void main()
 	if (rest == ptr)
 		std::cout << "Uncorrupted\n";
 	else
-		std::cout << "Corrupted\n";
+		return (std::cout << "Corrupted\n", 1);
+	return 0;
 }

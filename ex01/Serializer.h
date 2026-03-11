@@ -6,11 +6,13 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 19:41:15 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/11 19:49:24 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/11 20:02:41 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <stdint.h>
+#include <iostream>
 
 struct Data;
 
