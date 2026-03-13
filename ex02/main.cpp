@@ -6,11 +6,10 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 18:36:47 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/13 19:00:51 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:08:49 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cstdlib>
 #include <exception>
 #include "A.h"
@@ -24,11 +23,11 @@ Base	*generate()
 	switch (r)
 	{
 		case 0:
-			return new (A());
+			return new A();
 		case 1:
-			return new (B());
+			return new B();
 		case 2:
-			return new (C());
+			return new C();
 		default:
 			return NULL;
 	}
@@ -83,6 +82,7 @@ int	main()
 	std::cout << '\n';
 	for (std::size_t i = 0; i < 10; i++)
 		identify(*stuff[i]);
-	delete[] stuff;
+	for (std::size_t i = 0; i < 10; i++)
+		delete stuff[i];
 	return 0;
 }

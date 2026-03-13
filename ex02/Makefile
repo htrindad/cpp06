@@ -1,5 +1,5 @@
 NAME = typeIdent
-SRC = main.cpp
+SRC = Base.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CPPFLAGS = -Wall -Werror -Wextra -O3
 

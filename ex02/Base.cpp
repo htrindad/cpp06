@@ -1,20 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.h                                             :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/13 18:32:57 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/13 19:03:41 by htrindad         ###   ########.fr       */
+/*   Created: 2026/03/13 19:02:29 by htrindad          #+#    #+#             */
+/*   Updated: 2026/03/13 19:02:53 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
+#include "Base.h"
 
-class Base
-{
-	public:
-		virtual ~Base();
-};
+Base::~Base() { std::cout << "If you're reading this, you're gay\n"; }
