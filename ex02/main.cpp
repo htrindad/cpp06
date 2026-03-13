@@ -6,7 +6,7 @@
 /*   By: htrindad <htrindad@student.42lisboa.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 18:36:47 by htrindad          #+#    #+#             */
-/*   Updated: 2026/03/13 18:53:26 by htrindad         ###   ########.fr       */
+/*   Updated: 2026/03/13 19:00:51 by htrindad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ Base	*generate()
 	switch (r)
 	{
 		case 0:
-			return new A();
+			return new (A());
 		case 1:
-			return new B();
+			return new (B());
 		case 2:
-			return new C();
+			return new (C());
 		default:
 			return NULL;
 	}
