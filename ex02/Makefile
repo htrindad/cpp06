@@ -3,7 +3,7 @@ SRC = Base.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 CPPFLAGS = -Wall -Werror -Wextra -O3 -std=c++98
 
-%o: %.cpp
+%.o: %.cpp
 	c++ $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
