@@ -1,7 +1,7 @@
 NAME = typeIdent
 SRC = Base.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-CPPFLAGS = -Wall -Werror -Wextra -O3
+CPPFLAGS = -Wall -Werror -Wextra -O3 -std=c++98
 
 %o: %.cpp
 	c++ $(CPPFLAGS) -c $< -o $@

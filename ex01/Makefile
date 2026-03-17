@@ -1,6 +1,6 @@
 NAME = Serializer
 SRC = Serializer.cpp main.cpp
-CPPFLAGS = -Wall -Werror -Wextra -O3
+CPPFLAGS = -Wall -Werror -Wextra -O3 -std=c++98
 OBJ = $(SRC:.cpp=.o)
 
 %.o: %.cpp
